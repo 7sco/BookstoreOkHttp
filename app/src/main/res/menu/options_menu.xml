@@ -7,9 +7,11 @@
         android:id="@+id/profile"/>
     <item android:title="Search"
         app:showAsAction="always"
+        android:icon="@drawable/searchicon"
         android:id="@+id/search"/>
     <item android:title="Cart"
         app:showAsAction="always"
+        android:icon="@drawable/carticon"
         android:id="@+id/cart"/>
     <item android:title="Help"
         android:id="@+id/help"/>

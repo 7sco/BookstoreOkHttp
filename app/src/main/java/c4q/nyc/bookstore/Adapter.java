@@ -59,6 +59,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 //            if(lista.get(position).get("price").toString().equals("0") ){
 //                holder.downloadButton.setVisibility(View.VISIBLE);
 //            }
+
+
+            if(lista.get(position).get("inStock").toString().equals("true")){
+                holder.addCartBtn.setVisibility(View.VISIBLE);
+            }
             holder.container.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

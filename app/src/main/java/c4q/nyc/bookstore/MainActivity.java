@@ -252,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
             String data = intent.getStringExtra(RSSPullService.EXTENDED_DATA_STATUS);
             Toast.makeText(MainActivity.this, "Download complete", Toast.LENGTH_SHORT).show();
 
-            Button downloadButton= (Button)findViewById(R.id.downloadButton);
+            //Button downloadButton= (Button)findViewById(R.id.downloadButton);
 
             TextView tv = mainActivity.findViewById(R.id.textView);
             tv.setText("Last downloaded: " + data);

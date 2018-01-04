@@ -17,10 +17,12 @@
             android:id="@+id/id"
             android:layout_width="match_parent"
             android:text="TEXT"
+            android:visibility="gone"
             android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/cat"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:text="TEXT"
             android:layout_height="wrap_content" />
@@ -40,24 +42,31 @@
 
         <TextView
             android:id="@+id/series"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:text="TEXT"
             android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/sequence"
+            android:visibility="gone"
+
             android:layout_width="match_parent"
             android:text="TEXT"
             android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/genre"
+            android:visibility="gone"
+
             android:layout_width="match_parent"
             android:text="TEXT"
             android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/stock"
+            android:visibility="gone"
+
             android:layout_width="match_parent"
             android:text="TEXT"
             android:layout_height="wrap_content" />
@@ -70,6 +79,8 @@
 
         <TextView
             android:id="@+id/pages"
+            android:visibility="gone"
+
             android:layout_width="match_parent"
             android:text="TEXT"
             android:layout_height="wrap_content" />
