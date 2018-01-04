@@ -8,6 +8,4 @@ import java.util.ArrayList;
 
 public class List {
     static ArrayList<String> list= new ArrayList<>();
-
-
 }

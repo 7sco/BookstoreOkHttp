@@ -1,8 +1,8 @@
 package c4q.nyc.bookstore;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 public class DetailsActivity extends AppCompatActivity {
@@ -11,12 +11,8 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-
         textDetail=(TextView) findViewById(R.id.textDetail);
-
-
         Intent intent = getIntent();
-
         String id = intent.getStringExtra("id");
         String cat = intent.getStringExtra("cat");
         String name = intent.getStringExtra("name");
@@ -26,8 +22,6 @@ public class DetailsActivity extends AppCompatActivity {
         String inStock = intent.getStringExtra("inStock");
         String price = intent.getStringExtra("price");
         String pages_i = intent.getStringExtra("pages_i");
-
-
         String total= id+"\n"+
                 cat+"\n"+
                 name+"\n"+
@@ -37,12 +31,6 @@ public class DetailsActivity extends AppCompatActivity {
                 inStock+"\n"+
                 price+"\n"+
                 pages_i+"\n";
-
         textDetail.setText(total);
-
-
-
-
-
     }
 }

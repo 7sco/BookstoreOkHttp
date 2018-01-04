@@ -15,7 +15,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
-
 /**
  * Created by franciscoandrade on 12/18/17.
  */
@@ -25,7 +24,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     List<JSONObject> lista;
     Context context;
     int position;
-
     public Adapter(List<JSONObject> lista, Context context) {
         this.lista = lista;
         this.context = context;
@@ -39,20 +37,18 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-
-
         try {
             holder.id.setText(lista.get(position).get("id").toString());
             holder.cat.setText(lista.get(position).get("cat").toString());
             holder.name.setText(lista.get(position).get("name").toString());
+            holder.name.setTextColor(context.getResources().getColor(R.color.colorPrimary));
             holder.author.setText(lista.get(position).get("author").toString());
            // holder.series.setText(lista.get(position).getJSONArray("series_t").getInt(0));
-
-            //Log.d("RESULTADOO==", "onBindViewHolder: "+lista.get(position).getJSONArray("series_t"));
             holder.sequence.setText(lista.get(position).get("sequence_i").toString());
             holder.genre.setText(lista.get(position).get("genre_s").toString());
             holder.stock.setText(lista.get(position).get("inStock").toString());
-            holder.price.setText("PRICE="+lista.get(position).get("price").toString());
+            holder.price.setText("Price= $"+lista.get(position).get("price").toString());
+            holder.price.setTextColor(context.getResources().getColor(R.color.money));
             holder.pages.setText(lista.get(position).get("pages_i").toString());
 
             //shows hide download button
@@ -65,7 +61,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 public void onClick(View v) {
                     MainActivity.carBooks.add(lista.get(position));
                     lista.remove(position);
-
                     notifyDataSetChanged();
                 }
             });
@@ -76,7 +71,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             holder.container.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     Intent intent=  new Intent(context, DetailsActivity.class);
                     try {
                         intent.putExtra("id", lista.get(position).get("id").toString());
@@ -88,19 +82,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                         intent.putExtra("inStock", lista.get(position).get("inStock").toString());
                         intent.putExtra("price", lista.get(position).get("price").toString());
                         intent.putExtra("pages_i", lista.get(position).get("pages_i").toString());
-
                         context.startActivity(intent);
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
             });
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -109,7 +99,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         TextView id, cat, name, author, series, sequence, genre, stock, price, pages;
         //Button downloadButton;
         Button addCartBtn;
@@ -117,7 +106,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-
             id= (TextView)itemView.findViewById(R.id.id);
             cat= (TextView)itemView.findViewById(R.id.cat);
             name= (TextView)itemView.findViewById(R.id.name);

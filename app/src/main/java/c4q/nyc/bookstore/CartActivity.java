@@ -7,29 +7,21 @@ import android.widget.TextView;
 import org.json.JSONException;
 
 public class CartActivity extends AppCompatActivity {
-TextView cartText;
+    TextView cartText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
-
-
-        cartText= findViewById(R.id.cartText);
-
-
+        cartText = findViewById(R.id.cartText);
         try {
-            //cartText.setText(MainActivity.carBooks.get(0).get("name").toString());
-            String text="";
-            for (int i=0; i<MainActivity.carBooks.size(); i++){
-
-                text+=MainActivity.carBooks.get(i).get("name").toString()+"\n";
+            String text = "";
+            for (int i = 0; i < MainActivity.carBooks.size(); i++) {
+                text += MainActivity.carBooks.get(i).get("name").toString() + "\n";
             }
             cartText.setText(text);
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 }
