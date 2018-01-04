@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     List<JSONObject> listaBooks= new ArrayList<>();
+    static List<JSONObject> carBooks= new ArrayList<>();
 
     private static String TAG = "MainActivity";
     protected MainActivity mainActivity;
@@ -87,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(this).registerReceiver(
                 mDownloadStateReceiver,
                 statusIntentFilter);
+
+
     }
 
 
@@ -284,6 +288,26 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        LinearLayout searchbox;
+        searchbox=findViewById(R.id.searchbox);
+        switch (item.getItemId()){
+            case R.id.search:
+                if(searchbox.getVisibility() == View.GONE){
+                    searchbox.setVisibility(View.VISIBLE);
+                }
+                else {
+                    searchbox.setVisibility(View.GONE);
+
+                }
+                break;
+
+            case  R.id.cart:
+                Intent intent= new Intent(this, CartActivity.class);
+                startActivity(intent);
+
+
+        }
+
 
         Toast.makeText(this, "Selected: "+item.toString(), Toast.LENGTH_SHORT).show();
 

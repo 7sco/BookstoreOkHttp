@@ -60,6 +60,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 //                holder.downloadButton.setVisibility(View.VISIBLE);
 //            }
 
+            holder.addCartBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MainActivity.carBooks.add(lista.get(position));
+                    lista.remove(position);
+
+                    notifyDataSetChanged();
+                }
+            });
 
             if(lista.get(position).get("inStock").toString().equals("true")){
                 holder.addCartBtn.setVisibility(View.VISIBLE);

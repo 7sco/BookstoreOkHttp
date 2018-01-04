@@ -8,6 +8,7 @@
     tools:context="c4q.nyc.bookstore.MainActivity">
 
     <LinearLayout
+        android:id="@+id/searchbox"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:focusable="true"

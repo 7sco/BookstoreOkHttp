@@ -23,7 +23,8 @@
             android:name=".RSSPullService"
             android:exported="false" />
 
-        <activity android:name=".DetailsActivity"></activity>
+        <activity android:name=".DetailsActivity" />
+        <activity android:name=".CartActivity"></activity>
     </application>
 
 </manifest>
