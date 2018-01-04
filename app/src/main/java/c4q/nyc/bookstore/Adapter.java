@@ -97,7 +97,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView id, cat, name, author, series, sequence, genre, stock, price, pages;
-        Button downloadButton;
+        //Button downloadButton;
+        Button addCartBtn;
         LinearLayout container;
 
         public ViewHolder(View itemView) {
@@ -113,10 +114,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             stock= (TextView)itemView.findViewById(R.id.stock);
             price= (TextView)itemView.findViewById(R.id.price);
             pages= (TextView)itemView.findViewById(R.id.pages);
-            downloadButton= (Button) itemView.findViewById(R.id.downloadButton);
+          //  downloadButton= (Button) itemView.findViewById(R.id.downloadButton);
             container=(LinearLayout)itemView.findViewById(R.id.container);
-
-
+            addCartBtn=(Button)itemView.findViewById(R.id.addCartBtn);
         }
     }
 }

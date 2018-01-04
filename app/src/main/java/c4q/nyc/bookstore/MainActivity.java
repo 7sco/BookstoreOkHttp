@@ -12,6 +12,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -228,8 +231,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
     public void downloadInBackground(View v) {
         Intent mServiceIntent = new Intent(this, RSSPullService.class);
         mServiceIntent.setData(Uri.parse("http://google.com"));
@@ -238,8 +239,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Broadcast receiver for receiving status updates from the IntentService
-    private class DownloadStateReceiver extends BroadcastReceiver
-    {
+    private class DownloadStateReceiver extends BroadcastReceiver {
         String TAG = "DownloadStateReceiver";
         // Prevents instantiation
         private DownloadStateReceiver() {
@@ -259,5 +259,35 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
+    }
+
+
+//    @Override
+//    public boolean onContextItemSelected(MenuItem item) {
+//        Toast.makeText(this, "Selected: "+item.toString(), Toast.LENGTH_SHORT).show();
+//
+//        return true;
+//        //return super.onContextItemSelected(item);
+//    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options_menu, menu);
+        return true;
+
+//        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Toast.makeText(this, "Selected: "+item.toString(), Toast.LENGTH_SHORT).show();
+
+
+        return super.onOptionsItemSelected(item);
     }
 }
