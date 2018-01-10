@@ -45,7 +45,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     EditText searchET;
     TextView text, textoSearch;
-    Button btn;
+    Button btn, sortBtn;
     HashMap<String, JSONObject> booksMap = new HashMap<>();
     RecyclerView recyclerView;
     Adapter adapter;
@@ -264,19 +264,21 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         LinearLayout searchbox;
         searchbox=findViewById(R.id.searchbox);
+        sortBtn=findViewById(R.id.sortBtn);
         switch (item.getItemId()){
             case R.id.search:
                 if(searchbox.getVisibility() == View.GONE){
                     searchbox.setVisibility(View.VISIBLE);
                     textoSearch.setVisibility(View.VISIBLE);
                     recyclerView.setVisibility(View.GONE);
+                    sortBtn.setVisibility(View.GONE);
                 }
                 else {
                     searchbox.setVisibility(View.GONE);
                     textoSearch.setVisibility(View.GONE);
                     textoSearch.setText("");
                    recyclerView.setVisibility(View.VISIBLE);
-
+                    sortBtn.setVisibility(View.VISIBLE);
                 }
                 break;
             case  R.id.cart:

@@ -53,12 +53,11 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:id="@+id/sortBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SORT BY AUTHOR"
         android:onClick="onClick"/>
-
-
     </LinearLayout>
 
 </FrameLayout>
