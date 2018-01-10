@@ -44,6 +44,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     EditText searchET;
+    Context context=this;
     TextView text, textoSearch;
     Button btn, sortBtn;
     HashMap<String, JSONObject> booksMap = new HashMap<>();
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // Do something after 5s = 5000ms
-                adapter = new Adapter(listModel, getApplicationContext());
+                adapter = new Adapter(listModel, context);
                 recyclerView.setAdapter(adapter);
             }
         }, 2000);
