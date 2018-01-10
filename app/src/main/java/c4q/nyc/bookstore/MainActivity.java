@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 // Do something after 5s = 5000ms
                 adapter = new Adapter(listModel, context);
+
                 recyclerView.setAdapter(adapter);
             }
         }, 2000);
