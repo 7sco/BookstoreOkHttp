@@ -3,26 +3,22 @@ package c4q.nyc.bookstore;
 /**
  * Created by franciscoandrade on 12/18/17.
  */
+
+import java.io.Serializable;
+
 /**
  * Created by franciscoandrade on 12/14/17.
  */
 
-public class Model {
-    private String id;
+public class Model implements Serializable {
+    private String id, name, author, series_t, genre_s;
     private String[] cat;
-    private String name;
-    private String author;
-    private String series_t;
-    private int sequence_i;
-    private String genre_s;
+    private int sequence_i, pages_i;
     private Boolean inStock;
     private double price;
-    private int pages_i;
 
-
-    public Model(String id, String[] cat, String name, String author, String series_t, int sequence_i, String genre_s, Boolean inStock, double price, int pages_i) {
+    public Model(String id, String name, String author, String series_t, int sequence_i, String genre_s, Boolean inStock, double price, int pages_i) {
         this.id = id;
-        this.cat = cat;
         this.name = name;
         this.author = author;
         this.series_t = series_t;
@@ -33,6 +29,16 @@ public class Model {
         this.pages_i = pages_i;
     }
 
+    public Model(String id, String name, String author, int sequence_i, String genre_s, Boolean inStock, double price, int pages_i) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.sequence_i = sequence_i;
+        this.genre_s = genre_s;
+        this.inStock = inStock;
+        this.price = price;
+        this.pages_i = pages_i;
+    }
 
     public String getId() {
         return id;

@@ -2,17 +2,14 @@ package c4q.nyc.bookstore;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.List;
 /**
@@ -21,10 +18,9 @@ import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
-    List<JSONObject> lista;
+    List<Model> lista;
     Context context;
-    int position;
-    public Adapter(List<JSONObject> lista, Context context) {
+    public Adapter(List<Model> lista, Context context) {
         this.lista = lista;
         this.context = context;
     }
@@ -37,60 +33,44 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        try {
-            holder.id.setText(lista.get(position).get("id").toString());
-            holder.cat.setText(lista.get(position).get("cat").toString());
-            holder.name.setText(lista.get(position).get("name").toString());
-            holder.name.setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            holder.author.setText(lista.get(position).get("author").toString());
-           // holder.series.setText(lista.get(position).getJSONArray("series_t").getInt(0));
-            holder.sequence.setText(lista.get(position).get("sequence_i").toString());
-            holder.genre.setText(lista.get(position).get("genre_s").toString());
-            holder.stock.setText(lista.get(position).get("inStock").toString());
-            holder.price.setText("Price= $"+lista.get(position).get("price").toString());
-            holder.price.setTextColor(context.getResources().getColor(R.color.money));
-            holder.pages.setText(lista.get(position).get("pages_i").toString());
-
-            //shows hide download button
+        holder.id.setText(lista.get(position).getId());
+        holder.name.setText(lista.get(position).getName());
+        holder.name.setTextColor(context.getResources().getColor(R.color.colorPrimary));
+        holder.author.setText(lista.get(position).getAuthor());
+        holder.sequence.setText(lista.get(position).getSequence_i()+"");
+        holder.genre.setText(lista.get(position).getGenre_s());
+        holder.stock.setText(lista.get(position).getInStock().toString());
+        holder.price.setText("Price= $"+lista.get(position).getPrice());
+        holder.price.setTextColor(context.getResources().getColor(R.color.money));
+        holder.pages.setText(lista.get(position).getPages_i()+"");
+        //shows hide download button
 //            if(lista.get(position).get("price").toString().equals("0") ){
 //                holder.downloadButton.setVisibility(View.VISIBLE);
 //            }
-
-            holder.addCartBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    MainActivity.carBooks.add(lista.get(position));
-                    lista.remove(position);
-                    notifyDataSetChanged();
-                }
-            });
-
-            if(lista.get(position).get("inStock").toString().equals("true")){
-                holder.addCartBtn.setVisibility(View.VISIBLE);
+        holder.addCartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.carBooks.add(lista.get(position));
+                lista.remove(position);
+                notifyDataSetChanged();
             }
-            holder.container.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent=  new Intent(context, DetailsActivity.class);
-                    try {
-                        intent.putExtra("id", lista.get(position).get("id").toString());
-                        intent.putExtra("cat", lista.get(position).get("cat").toString());
-                        intent.putExtra("name", lista.get(position).get("name").toString());
-                        intent.putExtra("author", lista.get(position).get("author").toString());
-                        intent.putExtra("sequence_i", lista.get(position).get("sequence_i").toString());
-                        intent.putExtra("genre_s", lista.get(position).get("genre_s").toString());
-                        intent.putExtra("inStock", lista.get(position).get("inStock").toString());
-                        intent.putExtra("price", lista.get(position).get("price").toString());
-                        intent.putExtra("pages_i", lista.get(position).get("pages_i").toString());
-                        context.startActivity(intent);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-        } catch (JSONException e) {
-            e.printStackTrace();
+        });
+
+        if(lista.get(position).getInStock()){
+            holder.addCartBtn.setVisibility(View.VISIBLE);
         }
+        holder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=  new Intent(context, DetailsActivity.class);
+                //JSONObject object= lista.get(position);
+                Model model= lista.get(position);
+                Bundle bundle= new Bundle();
+                bundle.putSerializable("book", model);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
